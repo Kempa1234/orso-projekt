@@ -28,3 +28,5 @@ document.querySelector(".mentes").addEventListener("click", () => {
   felhasznalonevbeir.innerHTML=`${felhasznalonev}`;
 });
 
+
+
