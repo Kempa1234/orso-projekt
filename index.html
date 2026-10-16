@@ -75,7 +75,7 @@
             <h2 class="accordion-header">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                 aria-expanded="true" aria-controls="collapseOne">
-                Rendelések 
+                Rendelések
               </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -112,18 +112,76 @@
                         </tr>
                       </tbody>
                     </table>
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Rendelő neve:</label>
+                        <input type="text" class="form-control marka">
+                      </div>
+
+
+                      <div class="row mb-3">
+                        <div class="col-md-4">
+                          <label class="form-label">Irányítószám:</label>
+                          <input type="text" class="form-control iranyitoszam" maxlength="4" pattern="[0-9]{4}"
+                            inputmode="numeric" placeholder="1111">
+                        </div>
+                        <div class="col-md-8">
+                          <label class="form-label">Város:</label>
+                          <input type="text" class="form-control varos">
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <label class="form-label">Utca:</label>
+                          <input type="text" class="form-control utca">
+                        </div>
+                        <div class="col-md-2">
+                          <label class="form-label">Házszám:</label>
+                          <input type="text" class="form-control hazszam">
+                        </div>
+                        <div class="col-md-2">
+                          <label class="form-label">Emelet:</label>
+                          <input type="text" class="form-control emelet">
+                        </div>
+                        <div class="col-md-2">
+                          <label class="form-label">Ajtó:</label>
+                          <input type="text" class="form-control ajto">
+                        </div>
+                      </div>
+
+
+                      <div class="mb-3">
+                        <label class="form-label">Telefonszám:</label>
+                        <input type="tel" class="form-control telefon" placeholder="+36 30 356 4987"
+                          pattern="^(\+36|06)[\s-]?\d{1,2}[\s-]?\d{3}[\s-]?\d{3,4}$"
+                          title="Pl.: +36 30 356 4987 vagy 06-30-356-4987">
+                      </div>
+                      <label class="form-label">Kiszállítás</label>
+                      <select class="form-select szin" aria-label="Default select example">
+                        <option selected value="">Válasszon:</option>
+                        <option value="Kék">Bejön érte az éttermünkbe</option>
+                        <option value="Fehér">Kiszállítás (+600FT)</option>
+                      </select>
                   </div>
+                  <div class="mb-3">
+                    <button type="button" class="btn btn-success hozzaad">Hozzáadás</button>
+                    <button type="button" class="btn btn-secondary megse">Mégse</button>
+                  </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+    </div>
+    </section>
   </main>
   <footer></footer>
 
 
   <script src="js/Etel.js"></script>
+  <script src="js/Etelteszt.js"></script>
   <script src="js/script.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
 </body>
