@@ -1,6 +1,4 @@
-var rendelesek = [
-    new Etel("Pista", "Budapest", "+36 30 356 4987")
-];
+var rendelesek = [];
 var szerkesztendo = -1;
 var torlendo = -1;
 
