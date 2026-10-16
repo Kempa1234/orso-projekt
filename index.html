@@ -27,143 +27,154 @@
               <a class="nav-link active px-4" aria-current="page" href="index.html"><i class="bi bi-cart2"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-4" aria-current="page" href="profil.html"><i class="bi bi-person"></i></a>
+              <a class="nav-link px-4" href="profil.html"><i class="bi bi-person"></i></a>
             </li>
             <li class="nav-item">
               <p class="ido ps-5"></p>
-            </li>
-
-
             </li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
+
   <main class="container-fluid py-3">
-  <div class="row me-2">
-    <section class="col-lg-4">
-      <div class="card w-500 mb-5">
-        <div class="card-body">
-          <h5 class="card-title">Összes Rendelés</h5>
-          <p class="card-text">Összes rendelés: 0</p>
-        </div>
-      </div>
-      <div class="card w-500 mb-3">
-        <div class="card-body">
-          <h1>ITT LESZ A TÉRKÉP</h1>
-        </div>
-      </div>
-    </section>
-
-    <section class="col-lg-8">
-      <div class="row">
-        <div class="card w-500 mb-5 col-lg-6 me-3">
+    <div class="row me-2">
+      <section class="col-lg-4">
+        <div class="card w-500 mb-5">
           <div class="card-body">
             <h5 class="card-title">Összes Rendelés</h5>
             <p class="card-text">Összes rendelés: 0</p>
           </div>
         </div>
-        <div class="card w-500 mb-5 col-lg-5">
+        <div class="card w-500 mb-3">
           <div class="card-body">
-            <h5 class="card-title">Összes Rendelés</h5>
-            <p class="card-text">Összes rendelés: 0</p>
+            <h1>ITT LESZ A TÉRKÉP</h1>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- EGY card: felül a rendelés, alatta a táblázat -->
-      <div class="card w-500 mb-5">
-        <div class="card-body">
+      <section class="col-lg-8">
+        <div class="row">
+          <div class="card w-500 mb-5 col-lg-6 me-3">
+            <div class="card-body">
+              <h5 class="card-title">Összes Rendelés</h5>
+              <p class="card-text">Összes rendelés: 0</p>
+            </div>
+          </div>
+          <div class="card w-500 mb-5 col-lg-5">
+            <div class="card-body">
+              <h5 class="card-title">Összes Rendelés</h5>
+              <p class="card-text">Összes rendelés: 0</p>
+            </div>
+          </div>
+        </div>
 
-          <!-- Rendelés (felül) -->
-          <div class="accordion mb-4" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Rendelés
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  <form>
-                    <div class="mb-3">
-                      <label class="form-label">Rendelő neve:</label>
-                      <input type="text" class="form-control marka">
-                    </div>
+        <div class="card w-500 mb-5">
+          <div class="card-body">
 
-                    <div class="mb-3">
-                      <label class="form-label">Város:</label>
-                      <input type="text" class="form-control varos">
-                    </div>
+            <div class="accordion mb-4" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Rendelés
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Rendelő neve:</label>
+                        <input type="text" class="form-control marka">
+                      </div>
 
-                    <div class="mb-3">
-                      <label class="form-label">Telefonszám:</label>
-                      <input type="tel" class="form-control telefon" placeholder="+36 30 356 4987"
-                        pattern="^(\+36|06)[\s-]?\d{1,2}[\s-]?\d{3}[\s-]?\d{3,4}$"
-                        title="Pl.: +36 30 356 4987 vagy 06-30-356-4987">
-                    </div>
+                      <div class="mb-3">
+                        <label class="form-label">Város:</label>
+                        <input type="text" class="form-control varos">
+                      </div>
 
-                    <div class="mb-3">
-                      <button type="button" class="btn btn-success hozzaad">Hozzáadás</button>
-                      <button type="button" class="btn btn-secondary megse">Mégse</button>
-                    </div>
-                  </form>
+                      <div class="mb-3">
+                        <label class="form-label">Telefonszám:</label>
+                        <input type="tel" class="form-control telefon" placeholder="+36 30 356 4987">
+                      </div>
+
+                      <div class="mb-3">
+                        <button type="button" class="btn btn-success hozzaad">Hozzáadás</button>
+                        <button type="button" class="btn btn-secondary megse">Mégse</button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Megrendelő</th>
+                  <th scope="col">Helyszín</th>
+                  <th scope="col">lemondása/szerkeztése</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+
           </div>
+        </div>
+      </section>
+    </div>
+  </main>
 
-          <!-- Táblázat (alul) -->
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Megrendelő</th>
-                <th scope="col">Helyszín</th>
-                <th scope="col">Kiszállítás</th>
-                <th scope="col">lemondása/szerkeztése</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>grtgrg</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>fef</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>John</td>
-                <td>Doe</td>
-                <td>@social</td>
-                <td>fefe</td>
-              </tr>
-            </tbody>
-          </table>
+  <div class="modal fade" id="sikeresModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body"></div>
+      </div>
+    </div>
+  </div>
 
+  <div class="modal fade" id="hibaModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Hiba</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Rendelés lemondása</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">Biztosan lemondod a rendelést?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégse</button>
+          <button type="button" class="btn btn-danger torles" data-bs-dismiss="modal">Lemondás</button>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</main>
+
   <footer></footer>
 
-
+  <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/Etel.js"></script>
   <script src="js/Etelteszt.js"></script>
   <script src="js/etelscript.js"></script>
   <script src="js/script.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
