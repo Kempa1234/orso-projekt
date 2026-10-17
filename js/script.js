@@ -39,6 +39,10 @@ document.querySelector(".mentes").addEventListener("click", () => {
     if(nevellenorzo() == true){
   var felhasznalonevbeir = document.querySelector(".felhasznalonevbeir");
   var felhasznalonev = document.querySelector(".felhasznalonev").value;
+    }else{
+        myModal.show();
+        var modalbody = document.querySelector(".modal-body");
+        modalbody.innerHTML="A felhasználónév, email vagy a teljes neved rossz! csakis 2 és 30 között lehet a karakterek száma!"
     }
     if(emaillenorzo() == true){
   var email = document.querySelector(".email").value;
