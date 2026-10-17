@@ -5,10 +5,13 @@ var torlendo = -1;
 const sikeresModal = new bootstrap.Modal('#sikeresModal');
 const hibaModal = new bootstrap.Modal('#hibaModal');
 
+
+//ai
 function telefonEllenorzo(telefon) {
     var minta = /^(\+36|06)[\s-]?\d{1,2}[\s-]?\d{3}[\s-]?\d{3,4}$/;
     return minta.test(telefon);
 }
+//
 
 function kiir() {
     var tbody = document.querySelector("tbody");
@@ -18,15 +21,17 @@ function kiir() {
                                 <th scope="row">${i + 1}</th>
                                 <td>${rendelesek[i].getNev()}</td>
                                 <td>${rendelesek[i].getVaros()}</td>
+                                 <td>${rendelesek[i].getTelefon()}</td>
                                 <td><i class="bi bi-pencil-fill pe-4" onclick="szerkeszt(${i})"></i> <i class="bi bi-trash-fill text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="megerosit(${i})"></i></td>
                             </tr>`;
     }
-
+//ai
     var szovegek = document.querySelectorAll(".card-text");
     for (let i = 0; i < szovegek.length; i++) {
         szovegek[i].innerHTML = "Összes rendelés: " + rendelesek.length;
     }
 }
+//
 
 function megerosit(index) {
     torlendo = index;
@@ -66,20 +71,19 @@ document.querySelector(".hozzaad").addEventListener('click', () => {
         rendelesek.push(r);
         document.querySelector("#sikeresModal .modal-title").innerHTML = "Sikeres hozzáadás";
         document.querySelector("#sikeresModal .modal-body").innerHTML = "A rendelés hozzáadása sikeresen megtörtént";
+        sikeresModal.show(); 
     } else {
         rendelesek[szerkesztendo].setNev(marka.value);
         rendelesek[szerkesztendo].setVaros(varos.value);
         rendelesek[szerkesztendo].setTelefon(telefon.value);
-        document.querySelector("#sikeresModal .modal-title").innerHTML = "Sikeres frissítés";
-        document.querySelector("#sikeresModal .modal-body").innerHTML = "A rendelés szerkesztése sikeresen megtörtént";
         szerkesztendo = -1;
         document.querySelector(".hozzaad").innerHTML = "Hozzáadás";
     }
 
     marka.value = varos.value = telefon.value = "";
     kiir();
-    sikeresModal.show();
 });
+
 
 document.querySelector(".megse").addEventListener('click', () => {
     document.querySelector(".marka").value = "";
