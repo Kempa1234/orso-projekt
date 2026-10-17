@@ -78,7 +78,8 @@ if(jelszoellenorzo() == true && ujjelszoellenorzo() == true){
     regijelszo.value = "";
 }else{
     myModal.show();
-
+        var modalbody = document.querySelector(".modal-body");
+        modalbody.innerHTML=""
 }
 })
 
