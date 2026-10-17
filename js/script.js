@@ -1,7 +1,10 @@
  var today = new Date();
  var ido = document.querySelector(".ido");
  ido.innerHTML = today;
- //A 14. sorig ai írta
+const myModal = new bootstrap.Modal('#myModal', {
+  keyboard: false
+})
+
 document.getElementById('imageInput').addEventListener('change', function(event) {
     const file = event.target.files[0]; 
 
@@ -12,15 +15,20 @@ document.getElementById('imageInput').addEventListener('change', function(event)
     }
 });
 
-function nevellenorzo(felhasznalonev) {
+function nevellenorzo() {
     if(document.querySelector(".felhasznalonev").value.length < 30 && document.querySelector(".felhasznalonev").value.length > 2 ){ 
         return true;
     }
     return false;
-       
 }
-function emaillenorzo(felhasznalonev) {
+function emaillenorzo() {
     if(document.querySelector(".email").value.length < 30 && document.querySelector(".email").value.length > 2 ){ 
+        return true;
+    }
+    return false;
+}
+function teljes_nevellenorzo() {
+    if(document.querySelector(".teljes_nev").value.length < 30 && document.querySelector(".teljes_nev").value.length > 2 ){ 
         return true;
     }
     return false;
@@ -28,12 +36,20 @@ function emaillenorzo(felhasznalonev) {
 }
 
 document.querySelector(".mentes").addEventListener("click", () => {
-  var email = document.querySelector(".email").value;
-  var emailbeir = document.querySelector(".emailbeir");
-  var teljes_nev = document.querySelector(".teljes_nev").value;
-  var teljesnevbeir = document.querySelector(".teljesnevbeir");
+    if(nevellenorzo() == true){
   var felhasznalonevbeir = document.querySelector(".felhasznalonevbeir");
   var felhasznalonev = document.querySelector(".felhasznalonev").value;
+    }
+    if(emaillenorzo() == true){
+  var email = document.querySelector(".email").value;
+  var emailbeir = document.querySelector(".emailbeir");
+    }
+    if (teljes_nevellenorzo() == true) {
+    var teljes_nev = document.querySelector(".teljes_nev").value;
+    var teljesnevbeir = document.querySelector(".teljesnevbeir");
+    }
+
+
 
   emailbeir.innerHTML= "";
   emailbeir.innerHTML= `Email: ${email}`
