@@ -12,6 +12,21 @@ document.getElementById('imageInput').addEventListener('change', function(event)
     }
 });
 
+function nevellenorzo(felhasznalonev) {
+    if(document.querySelector(".felhasznalonev").value.length < 30 && document.querySelector(".felhasznalonev").value.length > 2 ){ 
+        return true;
+    }
+    return false;
+       
+}
+function emaillenorzo(felhasznalonev) {
+    if(document.querySelector(".email").value.length < 30 && document.querySelector(".email").value.length > 2 ){ 
+        return true;
+    }
+    return false;
+       
+}
+
 document.querySelector(".mentes").addEventListener("click", () => {
   var email = document.querySelector(".email").value;
   var emailbeir = document.querySelector(".emailbeir");
