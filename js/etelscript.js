@@ -1,4 +1,6 @@
-var rendelesek = [];
+var rendelesek = [
+    new Etel("Kovács Péter", "Tatabánya", "+36 30 356 4987", "Pizza"),
+];
 var szerkesztendo = -1;
 var torlendo = -1;
 
