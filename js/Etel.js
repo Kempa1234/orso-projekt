@@ -2,11 +2,13 @@ class Etel {
     #nev;
     #varos;
     #telefon;
+    #etel;
 
-    constructor(nev, varos, telefon) {
+    constructor(nev, varos, telefon, etel) {
         this.setNev(nev);
         this.setVaros(varos);
         this.setTelefon(telefon);
+        this.setEtel(etel);
     }
 
     setNev(nev) {
@@ -34,6 +36,18 @@ class Etel {
     }
 //ai
 
+    setEtel(etel) {
+        if (typeof etel !== "string") {
+            return false;
+        }
+        etel = etel.trim();
+        if (etel.length < 2 || etel.length > 50) {
+            return false;
+        }
+        this.#etel = etel;
+        return true;
+    }
+
     getNev() {
         return this.#nev;
     }
@@ -44,5 +58,9 @@ class Etel {
 
     getTelefon() {
         return this.#telefon;
+    }
+
+    getEtel() {
+        return this.#etel;
     }
 }
