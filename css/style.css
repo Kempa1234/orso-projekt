@@ -37,3 +37,8 @@ img {
 .bi-pencil-fill, .bi-trash-fill {
   cursor: pointer;
 }
+.table th:nth-child(n+6),
+.table td:nth-child(n+6) {
+  width: 1%;
+  white-space: nowrap;
+}
