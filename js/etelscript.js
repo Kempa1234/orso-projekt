@@ -117,7 +117,7 @@ function kiir() {
                                  <td>${rendelesek[i].getTelefon()}</td>
                                 <td>${rendelesek[i].getEtel()}</td>
                                 <td>${rendelesek[i].getAr().toLocaleString("hu-HU")} Ft</td>
-                                <td><i class="bi bi-pencil-fill text-primary pe-4" title="Szerkesztés" onclick="szerkeszt(${i})"></i> <i class="bi bi-trash-fill text-danger" title="Lemondás" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="megerosit(${i})"></i></td>                            </tr>`;
+                                <td><i class="bi bi-pencil-fill text-primary pe-4" title="Szerkesztés" onclick="szerkeszt(${i})"></i> <i class="bi bi-trash-fill text-danger" title="Lemondás" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="megerosit(${i})"></i></td></tr>`;
     }
 
     var osszeg = 0;
@@ -154,7 +154,6 @@ function szerkeszt(index) {
     document.querySelector(".hozzaad").innerHTML = "Frissítés";
     szerkesztendo = index;
 
-    // Kinyitja a "Rendelés" űrlapot, odagörget, és a névmezőre ugrik
     bootstrap.Collapse.getOrCreateInstance(document.getElementById("collapseOne"), { toggle: false }).show();
     document.querySelector(".accordion").scrollIntoView({ behavior: "smooth", block: "start" });
     marka.focus({ preventScroll: true });
