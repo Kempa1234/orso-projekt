@@ -6,12 +6,12 @@ const sikeresModal = new bootstrap.Modal('#sikeresModal');
 const hibaModal = new bootstrap.Modal('#hibaModal');
 
 
-//ai
+
 function telefonEllenorzo(telefon) {
     var minta = /^(\+36|06)[\s-]?\d{1,2}[\s-]?\d{3}[\s-]?\d{3,4}$/;
     return minta.test(telefon);
 }
-//
+
 
 function kiir() {
     var tbody = document.querySelector("tbody");
@@ -25,13 +25,13 @@ function kiir() {
                                 <td><i class="bi bi-pencil-fill pe-4" onclick="szerkeszt(${i})"></i> <i class="bi bi-trash-fill text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="megerosit(${i})"></i></td>
                             </tr>`;
     }
-//ai
+
     var szovegek = document.querySelectorAll(".card-text");
     for (let i = 0; i < szovegek.length; i++) {
         szovegek[i].innerHTML = "Összes rendelés: " + rendelesek.length;
     }
 }
-//
+
 
 function megerosit(index) {
     torlendo = index;
