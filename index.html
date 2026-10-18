@@ -47,7 +47,7 @@
         <div class="card w-500 mb-5">
           <div class="card-body">
             <h5 class="card-title">Rendelések Értéke:</h5>
-            <p class="card-text">Összesen: 0 Ft</p>
+            <p class="card-text ertek-szoveg">Összesen: 0 Ft</p>
           </div>
         </div>
         <div class="card w-500 mb-3">
@@ -62,13 +62,13 @@
           <div class="card w-500 mb-5 col-lg-6 me-2 ms-2">
             <div class="card-body">
               <h5 class="card-title">Összes Rendelés</h5>
-              <p class="card-text">Összes rendelés: 0</p>
+              <p class="card-text osszes-szoveg">Összes rendelés: 0</p>
             </div>
           </div>
           <div class="card w-500 mb-5 col-lg-5 ms-1">
             <div class="card-body">
-              <h5 class="card-title">Legközelebbi rendelés:</h5>
-              <p class="card-text">Legközelebbi: 0p</p>
+              <h5 class="card-title">Legnépszerűbb étel:</h5>
+              <p class="card-text nepszeru-szoveg">Még nincs rendelés</p>
             </div>
           </div>
         </div>
@@ -108,6 +108,11 @@
                       </div>
 
                       <div class="mb-3">
+                        <label class="form-label">Ár (Ft):</label>
+                        <input type="number" class="form-control ar" min="1" step="1" placeholder="pl. 3500">
+                      </div>
+
+                      <div class="mb-3">
                         <button type="button" class="btn btn-success hozzaad">Hozzáadás</button>
                         <button type="button" class="btn btn-secondary megse">Mégse</button>
                       </div>
@@ -125,7 +130,8 @@
                   <th scope="col">Helyszín</th>
                    <th scope="col">Telefonszám</th>
                    <th scope="col">Étel</th>
-                  <th scope="col">lemondása/szerkeztése</th>
+                  <th scope="col">Ár</th>
+                  <th scope="col">lemondása</th>
                 </tr>
               </thead>
               <tbody>

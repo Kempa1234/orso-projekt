@@ -1,36 +1,82 @@
 @media (max-width: 991px) {
-  main > .row {
-    margin-right: 0 !important;
+  .profil-main {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
   }
 
-  .card {
-    margin-bottom: 15px !important;
+  .profil-kartya {
+    width: auto !important;
+    max-width: 22rem;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
-  .card.col-lg-6,
-  .card.col-lg-5 {
+  .profil-szerkeszto {
+    border-left: 0 !important;
+    border-top: 1px solid #dee2e6;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-top: 0 !important;
+    padding-top: 16px;
+  }
+
+  .profil-szerkeszto .card {
     width: 100%;
     margin-right: 0 !important;
   }
 }
 
 @media (max-width: 575px) {
-  .navbar-brand {
-    font-size: 16px;
-    white-space: normal;
+  .profil-kartya {
+    margin: 12px auto !important;
   }
 
-  h1 {
-    font-size: 24px;
+  .kep-gomb {
+    width: 100% !important;
   }
 
-  .accordion-body .btn {
+  .profil-kartya .list-group-item {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .profil-szerkeszto .card-header h3 {
+    font-size: 1.15rem;
+  }
+
+  .profil-szerkeszto .card-body {
+    padding: 1rem;
+  }
+
+  .nem-valaszto {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 4px;
+  }
+
+  .nem-valaszto > p {
     width: 100%;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+    padding-right: 0 !important;
+    text-align: left;
   }
 
-  .table {
-    display: block;
-    overflow-x: auto;
+  .nem-valaszto .form-check-label {
+    padding-right: 1rem !important;
+  }
+
+  .mentes,
+  .jelszomentes {
+    width: 100%;
+  }
+
+  .navbar .ido {
+    padding-left: 0 !important;
+    margin-top: 0.5rem !important;
+  }
+
+  footer {
+    font-size: 14px;
   }
 }

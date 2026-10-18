@@ -25,7 +25,11 @@ const pontStilus = {
 
 setTimeout(() => terkep.invalidateSize(), 0);
 
-async function pontHozzaad(nev, varos) {
+const pontok = new Map();
+
+async function pontHozzaad(rendeles) {
+    const nev = rendeles.getNev().trim();
+    const varos = rendeles.getVaros().trim();
     let hely = null;
 
     if (varos) {
@@ -45,8 +49,19 @@ async function pontHozzaad(nev, varos) {
         ];
     }
 
+    if (!rendelesek.includes(rendeles)) return;
+
     const pont = L.circleMarker(hely, pontStilus).addTo(terkep);
     pont.bindPopup([nev, varos].filter(Boolean).join(" – "));
+    pontok.set(rendeles, pont);
+}
+
+function pontTorol(rendeles) {
+    const pont = pontok.get(rendeles);
+    if (pont) {
+        pont.remove();
+        pontok.delete(rendeles);
+    }
 }
 
 
@@ -62,6 +77,31 @@ function etelEllenorzo(etel) {
 }
 
 
+function arEllenorzo(ar) {
+    if (ar.trim() === "") return false;
+    ar = Number(ar);
+    return Number.isInteger(ar) && ar >= 1 && ar <= 100000;
+}
+
+
+function legnepszerubbEtel() {
+    var szamlalo = {};
+    var legjobb = null;
+    for (let i = 0; i < rendelesek.length; i++) {
+        var nev = rendelesek[i].getEtel();
+        var kulcs = nev.trim().toLowerCase();
+        if (!szamlalo[kulcs]) {
+            szamlalo[kulcs] = { nev: nev, db: 0 };
+        }
+        szamlalo[kulcs].db++;
+        if (legjobb === null || szamlalo[kulcs].db > legjobb.db) {
+            legjobb = szamlalo[kulcs];
+        }
+    }
+    return legjobb;
+}
+
+
 function kiir() {
     var tbody = document.querySelector("tbody");
     tbody.innerHTML = "";
@@ -72,14 +112,22 @@ function kiir() {
                                 <td>${rendelesek[i].getVaros()}</td>
                                  <td>${rendelesek[i].getTelefon()}</td>
                                 <td>${rendelesek[i].getEtel()}</td>
+                                <td>${rendelesek[i].getAr().toLocaleString("hu-HU")} Ft</td>
                                 <td><i class="bi bi-pencil-fill pe-4" onclick="szerkeszt(${i})"></i> <i class="bi bi-trash-fill text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="megerosit(${i})"></i></td>
                             </tr>`;
     }
 
-    var szovegek = document.querySelectorAll(".card-text");
-    for (let i = 0; i < szovegek.length; i++) {
-        szovegek[i].innerHTML = "Összes rendelés: " + rendelesek.length;
+    var osszeg = 0;
+    for (let i = 0; i < rendelesek.length; i++) {
+        osszeg += rendelesek[i].getAr();
     }
+    document.querySelector(".ertek-szoveg").textContent = "Összesen: " + osszeg.toLocaleString("hu-HU") + " Ft";
+    document.querySelector(".osszes-szoveg").textContent = "Összes rendelés: " + rendelesek.length;
+
+    var nepszeru = legnepszerubbEtel();
+    document.querySelector(".nepszeru-szoveg").textContent = nepszeru === null
+        ? "Még nincs rendelés"
+        : nepszeru.nev + " (" + nepszeru.db + " db)";
 }
 
 
@@ -92,11 +140,13 @@ function szerkeszt(index) {
     var varos = document.querySelector(".varos");
     var telefon = document.querySelector(".telefon");
     var etel = document.querySelector(".etel");
+    var ar = document.querySelector(".ar");
 
     marka.value = rendelesek[index].getNev();
     varos.value = rendelesek[index].getVaros();
     telefon.value = rendelesek[index].getTelefon();
     etel.value = rendelesek[index].getEtel();
+    ar.value = rendelesek[index].getAr();
 
     document.querySelector(".hozzaad").innerHTML = "Frissítés";
     szerkesztendo = index;
@@ -107,8 +157,9 @@ document.querySelector(".hozzaad").addEventListener('click', () => {
     var varos = document.querySelector(".varos");
     var telefon = document.querySelector(".telefon");
     var etel = document.querySelector(".etel");
+    var ar = document.querySelector(".ar");
 
-    if (marka.value == "" || varos.value == "" || etel.value.trim() == "") {
+    if (marka.value == "" || varos.value == "" || etel.value.trim() == "" || ar.value.trim() == "") {
         document.querySelector("#hibaModal .modal-body").innerHTML = "<p>Minden mezőt ki kell tölteni!</p>";
         hibaModal.show();
         return;
@@ -124,23 +175,39 @@ document.querySelector(".hozzaad").addEventListener('click', () => {
         return;
     }
 
+    if (!arEllenorzo(ar.value)) {
+        document.querySelector("#hibaModal .modal-body").innerHTML = "<p>Hibás ár! 1 és 100000 Ft közötti egész szám kell. Pl.: 3500</p>";
+        hibaModal.show();
+        return;
+    }
+
     if (szerkesztendo == -1) {
-        var r = new Etel(marka.value, varos.value, telefon.value, etel.value);
+        var r = new Etel(marka.value, varos.value, telefon.value, etel.value, ar.value);
         rendelesek.push(r);
         document.querySelector("#sikeresModal .modal-title").innerHTML = "Sikeres hozzáadás";
         document.querySelector("#sikeresModal .modal-body").innerHTML = "A rendelés hozzáadása sikeresen megtörtént";
         sikeresModal.show();
-        pontHozzaad(marka.value.trim(), varos.value.trim());
+        pontHozzaad(r);
     } else {
+        var modositott = rendelesek[szerkesztendo];
+        var regiNev = modositott.getNev();
+        var regiVaros = modositott.getVaros();
+
         rendelesek[szerkesztendo].setNev(marka.value);
         rendelesek[szerkesztendo].setVaros(varos.value);
         rendelesek[szerkesztendo].setTelefon(telefon.value);
         rendelesek[szerkesztendo].setEtel(etel.value);
+        rendelesek[szerkesztendo].setAr(ar.value);
+
+        if (modositott.getNev() !== regiNev || modositott.getVaros() !== regiVaros) {
+            pontTorol(modositott);
+            pontHozzaad(modositott);
+        }
         szerkesztendo = -1;
         document.querySelector(".hozzaad").innerHTML = "Hozzáadás";
     }
 
-    marka.value = varos.value = telefon.value = etel.value = "";
+    marka.value = varos.value = telefon.value = etel.value = ar.value = "";
     kiir();
 });
 
@@ -150,12 +217,15 @@ document.querySelector(".megse").addEventListener('click', () => {
     document.querySelector(".varos").value = "";
     document.querySelector(".telefon").value = "";
     document.querySelector(".etel").value = "";
+    document.querySelector(".ar").value = "";
     document.querySelector(".hozzaad").innerHTML = "Hozzáadás";
     szerkesztendo = -1;
 });
 
 document.querySelector(".torles").addEventListener('click', () => {
+    var torolt = rendelesek[torlendo];
     rendelesek.splice(torlendo, 1);
+    pontTorol(torolt);
     szerkesztendo = -1;
     document.querySelector(".hozzaad").innerHTML = "Hozzáadás";
     kiir();

@@ -3,12 +3,14 @@ class Etel {
     #varos;
     #telefon;
     #etel;
+    #ar = 0;
 
-    constructor(nev, varos, telefon, etel) {
+    constructor(nev, varos, telefon, etel, ar) {
         this.setNev(nev);
         this.setVaros(varos);
         this.setTelefon(telefon);
         this.setEtel(etel);
+        this.setAr(ar);
     }
 
     setNev(nev) {
@@ -47,6 +49,15 @@ class Etel {
         return true;
     }
 
+    setAr(ar) {
+        ar = Number(ar);
+        if (!Number.isInteger(ar) || ar < 1 || ar > 100000) {
+            return false;
+        }
+        this.#ar = ar;
+        return true;
+    }
+
     getNev() {
         return this.#nev;
     }
@@ -61,5 +72,9 @@ class Etel {
 
     getEtel() {
         return this.#etel;
+    }
+
+    getAr() {
+        return this.#ar;
     }
 }
