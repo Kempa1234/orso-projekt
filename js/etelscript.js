@@ -1,4 +1,8 @@
-var rendelesek = [];
+var rendelesek = [
+    new Etel("Kovács Péter", "Tatabánya", "+36 30 356 4987", "Pizza", 3400),
+    new Etel("Nagy Anna", "Budapest", "+36 20 123 4567", "Gulyásleves", 3000),
+    new Etel("Szabó Gábor", "Győr", "06 70 987 6543", "Rántott hal", 2400)
+];
 var szerkesztendo = -1;
 var torlendo = -1;
 
@@ -25,7 +29,11 @@ const pontStilus = {
 
 setTimeout(() => terkep.invalidateSize(), 0);
 
-async function pontHozzaad(nev, varos) {
+const pontok = new Map();
+
+async function pontHozzaad(rendeles) {
+    const nev = rendeles.getNev().trim();
+    const varos = rendeles.getVaros().trim();
     let hely = null;
 
     if (varos) {
@@ -45,8 +53,19 @@ async function pontHozzaad(nev, varos) {
         ];
     }
 
+    if (!rendelesek.includes(rendeles)) return;
+
     const pont = L.circleMarker(hely, pontStilus).addTo(terkep);
     pont.bindPopup([nev, varos].filter(Boolean).join(" – "));
+    pontok.set(rendeles, pont);
+}
+
+function pontTorol(rendeles) {
+    const pont = pontok.get(rendeles);
+    if (pont) {
+        pont.remove();
+        pontok.delete(rendeles);
+    }
 }
 
 
@@ -65,7 +84,25 @@ function etelEllenorzo(etel) {
 function arEllenorzo(ar) {
     if (ar.trim() === "") return false;
     ar = Number(ar);
-    return Number.isInteger(ar) && ar >= 1 && ar <= 1000000;
+    return Number.isInteger(ar) && ar >= 1 && ar <= 100000;
+}
+
+
+function legnepszerubbEtel() {
+    var szamlalo = {};
+    var legjobb = null;
+    for (let i = 0; i < rendelesek.length; i++) {
+        var nev = rendelesek[i].getEtel();
+        var kulcs = nev.trim().toLowerCase();
+        if (!szamlalo[kulcs]) {
+            szamlalo[kulcs] = { nev: nev, db: 0 };
+        }
+        szamlalo[kulcs].db++;
+        if (legjobb === null || szamlalo[kulcs].db > legjobb.db) {
+            legjobb = szamlalo[kulcs];
+        }
+    }
+    return legjobb;
 }
 
 
@@ -90,6 +127,11 @@ function kiir() {
     }
     document.querySelector(".ertek-szoveg").textContent = "Összesen: " + osszeg.toLocaleString("hu-HU") + " Ft";
     document.querySelector(".osszes-szoveg").textContent = "Összes rendelés: " + rendelesek.length;
+
+    var nepszeru = legnepszerubbEtel();
+    document.querySelector(".nepszeru-szoveg").textContent = nepszeru === null
+        ? "Még nincs rendelés"
+        : nepszeru.nev + " (" + nepszeru.db + " db)";
 }
 
 
@@ -138,7 +180,7 @@ document.querySelector(".hozzaad").addEventListener('click', () => {
     }
 
     if (!arEllenorzo(ar.value)) {
-        document.querySelector("#hibaModal .modal-body").innerHTML = "<p>Hibás ár! 1 és 1 000 000 Ft közötti egész szám kell. Pl.: 3500</p>";
+        document.querySelector("#hibaModal .modal-body").innerHTML = "<p>Hibás ár! 1 és 100000 Ft közötti egész szám kell. Pl.: 3500</p>";
         hibaModal.show();
         return;
     }
@@ -149,13 +191,22 @@ document.querySelector(".hozzaad").addEventListener('click', () => {
         document.querySelector("#sikeresModal .modal-title").innerHTML = "Sikeres hozzáadás";
         document.querySelector("#sikeresModal .modal-body").innerHTML = "A rendelés hozzáadása sikeresen megtörtént";
         sikeresModal.show();
-        pontHozzaad(marka.value.trim(), varos.value.trim());
+        pontHozzaad(r);
     } else {
+        var modositott = rendelesek[szerkesztendo];
+        var regiNev = modositott.getNev();
+        var regiVaros = modositott.getVaros();
+
         rendelesek[szerkesztendo].setNev(marka.value);
         rendelesek[szerkesztendo].setVaros(varos.value);
         rendelesek[szerkesztendo].setTelefon(telefon.value);
         rendelesek[szerkesztendo].setEtel(etel.value);
         rendelesek[szerkesztendo].setAr(ar.value);
+
+        if (modositott.getNev() !== regiNev || modositott.getVaros() !== regiVaros) {
+            pontTorol(modositott);
+            pontHozzaad(modositott);
+        }
         szerkesztendo = -1;
         document.querySelector(".hozzaad").innerHTML = "Hozzáadás";
     }
@@ -176,10 +227,14 @@ document.querySelector(".megse").addEventListener('click', () => {
 });
 
 document.querySelector(".torles").addEventListener('click', () => {
+    var torolt = rendelesek[torlendo];
     rendelesek.splice(torlendo, 1);
+    pontTorol(torolt);
     szerkesztendo = -1;
     document.querySelector(".hozzaad").innerHTML = "Hozzáadás";
     kiir();
 });
+
+
 
 kiir();
