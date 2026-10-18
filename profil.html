@@ -1,162 +1,171 @@
 <!DOCTYPE html>
 
 <html lang="hu">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mobilstyle.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobilstyle.css">
 
 </head>
-<body>
-    <header>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
- <a class="navbar-brand" href="#">
-      <img src="img/placeholder1.jpg" alt="Bootstrap" width="30" height="24">
-    </a>
-    <a class="navbar-brand nb" href="index.html">Food Delivery Managament System</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link px-4" aria-current="page" href="index.html"><i class="bi bi-cart2"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active px-4" aria-current="page" href="profil.html"><i class="bi bi-person"></i></a>
-        </li>
-                <li class="nav-item">
-            <p class="ido ps-5"></p>            
-                </li>   
-  
 
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-    </header>
-    <main  class="pe-5">
-      <section class="container">
-        <div class="row">
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="img/placeholder1.jpg" alt="Bootstrap" width="30" height="24">
+        </a>
+        <a class="navbar-brand" href="index.html">Food Delivery Managament System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active px-4 mt-2" aria-current="page" href="index.html"><i class="bi bi-cart2"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-4 mt-2" href="profil.html"><i class="bi bi-person"></i></a>
+            </li>
+            <li class="nav-item">
+              <p class="ido ps-5 mt-3"></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="pe-5">
+    <section class="container">
+      <div class="row">
+      </div>
+    </section>
+    <div class="row">
+      <section class="col-lg-3">
+        <div class="card m-3 p-3 pt-0" style="width: 22rem;">
+          <img id="previewImage" src="img/placeholder3.webp" alt="felhasznalonev"
+            style="max-width: 100%; display: block; margin-top: 10px;">
+          <div class="card-body">
+            <h5 class="card-title text-center felhasznalonevbeir">xxx_Kincses_Ádám_xxx</h5>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <label for="imageInput" class="btn btn-primary">
+                <i class="bi bi-upload me-2"></i> Egyedi kép kiválasztása
+              </label>
+              <input type="file" id="imageInput" accept="image/*" class="d-none">
+            </div>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item emailbeir">Email: kincses.adam.2023i@bankitatabanya.hu</li>
+            <li class="list-group-item teljesnevbeir">Teljes név: Gipsz Jakab</li>
+          </ul>
 
         </div>
       </section>
-        <div class="row">
-            <section class="col-lg-3">
-        <div class="card m-3" style="width: 18rem;">
-<img id="previewImage" src="img/placeholder3.webp" alt="felhasznalonev" style="max-width: 300px; display: block; margin-top: 10px;">  <div class="card-body">
-    <h5 class="card-title text-center felhasznalonevbeir">xxx_Kincses_Ádám_xxx</h5>
-<div class="d-grid gap-2 col-6 mx-auto">
-<label for="imageInput" class="btn btn-primary">
-    <i class="bi bi-upload me-2"></i> Egyedi kép kiválasztása
-</label>
-<input type="file" id="imageInput" accept="image/*" class="d-none">
-</div>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item emailbeir">Email: kincses.adam.2023i@bankitatabanya.hu</li>
-    <li class="list-group-item teljesnevbeir">Teljes név: Gipsz Jakab</li>
-  </ul>
+      <section class="col-lg-9 border-start mt-3">
+        <div class="card text-center mb-4">
+          <div class="card-header">
+            <h3>Profil szerkesztése</h3>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label d-flex">Felhasználó név</label>
+              <input type="text" class="form-control felhasznalonev" id="exampleFormControlInput1"
+                placeholder="xxx_kellakaja_xxx">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label d-flex">Teljes név:</label>
+              <input type="text" class="form-control teljes_nev" id="exampleFormControlInput1"
+                placeholder="Gipsz-Jakab">
+            </div>
 
-</div>
-</section>
-<section class="col-lg-9 border-start mt-3">
-<div class="card text-center mb-4">
-  <div class="card-header">
-    <h3>Profil szerkesztése</h3>
-  </div>
-  <div class="card-body">
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label d-flex">Felhasználó név</label>
-  <input type="text" class="form-control felhasznalonev" id="exampleFormControlInput1" placeholder="xxx_kellakaja_xxx">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label d-flex">Teljes név:</label>
-  <input type="text" class="form-control teljes_nev" id="exampleFormControlInput1" placeholder="Gipsz-Jakab">
-</div>
+            <div class="mb-3 email-box">
+              <label for="exampleFormControlInput1" class="form-label d-flex">Email cím</label>
+              <input type="email" class="form-control email" id="exampleFormControlInput1"
+                placeholder="name@example.com">
+            </div>
+            <div class=" d-flex">
+              <p class="pe-5">Nem:</p>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1">
+                <label class="form-check-label pe-5" for="radioDefault1">
+                  Férfi
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1">
+                <label class="form-check-label pe-5" for="radioDefault1">
+                  Nő
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2" checked>
+                <label class="form-check-label pe-5" for="radioDefault2">
+                  Más
+                </label>
+              </div>
+            </div>
 
-<div class="mb-3 email-box">
-  <label for="exampleFormControlInput1" class="form-label d-flex">Email cím</label>
-  <input type="email" class="form-control email" id="exampleFormControlInput1" placeholder="name@example.com">
-</div>
-<div class=" d-flex">
-<p class="pe-5">Nem:</p>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1">
-  <label class="form-check-label pe-5" for="radioDefault1">
-    Férfi
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1">
-  <label class="form-check-label pe-5" for="radioDefault1">
-    Nő
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2" checked>
-  <label class="form-check-label pe-5" for="radioDefault2">
-    Más
-  </label>
-  </div>
-  </div>
+            <br>
+            <div class="d-flex justify-content-center">
+              <button type="button" class="btn btn-primary mentes ">Mentés</button>
+            </div>
+          </div>
+        </div>
 
-  <br>
-  <div class="d-flex justify-content-center">
-<button type="button" class="btn btn-primary mentes ">Mentés</button>
-</div>
-  </div>
-</div>
+        <div class="card text-center">
+          <div class="card-header">
+            <h3>Jelszó Módosítása: <i class="bi bi-lock lakat"></i></h3>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label d-flex">Jelenlegi jelszó:</label>
+              <input type="text" class="form-control regijelszo" id="exampleFormControlInput1"
+                placeholder="jelenlegi jelszó">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label d-flex">Új jelszó:</label>
+              <input type="text" class="form-control ujjelszo" id="exampleFormControlInput1" placeholder="új-jelszó">
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="button" class="btn btn-primary jelszomentes ">Jelszó mentése</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="p-3">
+    <p class="m-0">Minden jog fenntartva!&copy;</p>
+  </footer>
 
-<div class="card text-center">
-  <div class="card-header">
-    <h3>Jelszó Módosítása: <i class="bi bi-lock lakat"></i></h3>
-  </div>
-  <div class="card-body">
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Jelenlegi jelszó:</label>
-  <input type="text" class="form-control regijelszo" id="exampleFormControlInput1" placeholder="jelenlegi jelszó">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Új jelszó:</label>
-  <input type="text" class="form-control ujjelszo" id="exampleFormControlInput1" placeholder="új-jelszó">
-</div>
-  <div class="d-flex justify-content-center">
-<button type="button" class="btn btn-primary jelszomentes ">Jelszó mentése</button>
-</div>
-  </div>
-</div>
-</section>
-</div>
-    </main>
-    <footer class=""><p>Minden jog fenntartva!&copy;</p></footer>
 
-    <div class="modal" tabindex="-1" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">HIBA</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  <div class="modal" tabindex="-1" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">HIBA</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-    
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/Etel.js"></script>
-    <script src="js/script.js"></script>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/Etel.js"></script>
+  <script src="js/script.js"></script>
 
 
 </body>
+
 </html>
