@@ -1,7 +1,7 @@
 var rendelesek = [
-    new Etel("Kovács Péter", "Tatabánya", "+36 30 356 4987", "Pizza"),
-    new Etel("Nagy Anna", "Budapest", "+36 20 123 4567", "Gulyásleves"),
-    new Etel("Szabó Gábor", "Győr", "06 70 987 6543", "Rántott hal")
+    new Etel("Kovács Péter", "Tatabánya", "+36 30 356 4987", "Pizza", 3400),
+    new Etel("Nagy Anna", "Budapest", "+36 20 123 4567", "Gulyásleves", 3000),
+    new Etel("Szabó Gábor", "Győr", "06 70 987 6543", "Rántott hal", 2400)
 ];
 var szerkesztendo = -1;
 var torlendo = -1;
@@ -234,5 +234,7 @@ document.querySelector(".torles").addEventListener('click', () => {
     document.querySelector(".hozzaad").innerHTML = "Hozzáadás";
     kiir();
 });
+
+
 
 kiir();

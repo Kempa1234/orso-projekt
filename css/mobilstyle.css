@@ -80,3 +80,35 @@
     font-size: 14px;
   }
 }
+@media (max-width: 991px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .tabla-doboz {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+
+  .tabla-doboz .table {
+    min-width: 650px;
+    margin-bottom: 0;
+  }
+
+  .tabla-doboz::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .tabla-doboz::-webkit-scrollbar-track {
+    background: #e9ecef;
+    border-radius: 4px;
+  }
+
+  .tabla-doboz::-webkit-scrollbar-thumb {
+    background: #6c757d;
+    border-radius: 4px;
+  }
+}
