@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="css/mobilstyle.css">
   <title>Food delivery</title>
 </head>
 
@@ -49,7 +51,7 @@
         </div>
         <div class="card w-500 mb-3">
           <div class="card-body">
-            <h1>ITT LESZ A TÉRKÉP</h1>
+            <div id="terkep" style="height: 400px; width: 100%;"></div>
           </div>
         </div>
       </section>
@@ -178,10 +180,12 @@
     <footer class=""><p>Minden jog fenntartva!&copy;</p></footer>
 
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="js/Etel.js"></script>
   <script src="js/Etelteszt.js"></script>
   <script src="js/etelscript.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/terkep.js"></script>
 </body>
 
 </html>

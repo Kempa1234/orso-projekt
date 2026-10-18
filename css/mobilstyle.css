@@ -1,0 +1,36 @@
+@media (max-width: 991px) {
+  main > .row {
+    margin-right: 0 !important;
+  }
+
+  .card {
+    margin-bottom: 15px !important;
+  }
+
+  .card.col-lg-6,
+  .card.col-lg-5 {
+    width: 100%;
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .navbar-brand {
+    font-size: 16px;
+    white-space: normal;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .accordion-body .btn {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .table {
+    display: block;
+    overflow-x: auto;
+  }
+}

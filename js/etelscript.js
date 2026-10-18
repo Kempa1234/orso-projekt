@@ -6,6 +6,49 @@ const sikeresModal = new bootstrap.Modal('#sikeresModal');
 const hibaModal = new bootstrap.Modal('#hibaModal');
 
 
+const KOZEP = [47.1625, 19.5033];
+
+const terkep = L.map("terkep").setView(KOZEP, 7);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "&copy; OpenStreetMap contributors"
+}).addTo(terkep);
+
+const pontStilus = {
+    radius: 8,
+    color: "#ffffff",
+    weight: 2,
+    fillColor: "#198754",
+    fillOpacity: 1
+};
+
+setTimeout(() => terkep.invalidateSize(), 0);
+
+async function pontHozzaad(nev, varos) {
+    let hely = null;
+
+    if (varos) {
+        try {
+            const url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=hu&q=" +
+                encodeURIComponent(varos);
+            const valasz = await fetch(url);
+            const talalat = await valasz.json();
+            if (talalat.length) hely = [parseFloat(talalat[0].lat), parseFloat(talalat[0].lon)];
+        } catch (e) { }
+    }
+
+    if (!hely) {
+        hely = [
+            KOZEP[0] + (Math.random() - 0.5) * 1.2,
+            KOZEP[1] + (Math.random() - 0.5) * 2.4
+        ];
+    }
+
+    const pont = L.circleMarker(hely, pontStilus).addTo(terkep);
+    pont.bindPopup([nev, varos].filter(Boolean).join(" – "));
+}
+
 
 function telefonEllenorzo(telefon) {
     var minta = /^(\+36|06)[\s-]?\d{1,2}[\s-]?\d{3}[\s-]?\d{3,4}$/;
@@ -86,7 +129,8 @@ document.querySelector(".hozzaad").addEventListener('click', () => {
         rendelesek.push(r);
         document.querySelector("#sikeresModal .modal-title").innerHTML = "Sikeres hozzáadás";
         document.querySelector("#sikeresModal .modal-body").innerHTML = "A rendelés hozzáadása sikeresen megtörtént";
-        sikeresModal.show(); 
+        sikeresModal.show();
+        pontHozzaad(marka.value.trim(), varos.value.trim());
     } else {
         rendelesek[szerkesztendo].setNev(marka.value);
         rendelesek[szerkesztendo].setVaros(varos.value);
