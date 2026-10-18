@@ -1,6 +1,7 @@
- var today = new Date();
- var ido = document.querySelector(".ido");
- ido.innerHTML = today;
+setInterval(() => {
+    var datum = new Date()
+    document.querySelector(".ido").innerHTML = datum.getFullYear() + ". " + String((parseInt(datum.getMonth()) + 1)).padStart(2,"0") + ". " + String(datum.getDay()).padStart(2,"0") + ". - " + datum.getHours() + ":" + String(datum.getMinutes()).padStart(2,"0") + ":" + String(datum.getSeconds()).padStart(2,"0");
+}, (1000));
 const myModal = new bootstrap.Modal('#myModal', {
   keyboard: false
 })
@@ -79,7 +80,7 @@ if(jelszoellenorzo() == true && ujjelszoellenorzo() == true){
 }else{
     myModal.show();
         var modalbody = document.querySelector(".modal-body");
-        modalbody.innerHTML=""
+        modalbody.innerHTML="Rossz a Jelszó! Csakis 2 és 30 karakter között lehet!"
 }
 })
 
