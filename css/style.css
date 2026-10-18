@@ -25,6 +25,7 @@ footer {
     color: rgb(0, 0, 0);
 }
 
+<<<<<<< HEAD
 .bi-cart2:hover {
     color: rgba(87, 199, 133, 1);
 }
@@ -33,4 +34,46 @@ footer {
 }
 .nb:hover {
     color: rgba(42, 123, 155, 1) !important;
+=======
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 991px) {
+  main > .row {
+    margin-right: 0 !important;
+  }
+
+  .card {
+    margin-bottom: 15px !important;
+  }
+
+  .card.col-lg-6,
+  .card.col-lg-5 {
+    width: 100%;
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .navbar-brand {
+    font-size: 16px;
+    white-space: normal;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .accordion-body .btn {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .table {
+    display: block;
+    overflow-x: auto;
+  }
+>>>>>>> 836393f48e55c6a38b860781ec59f92fd71f0511
 }
