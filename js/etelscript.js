@@ -101,3 +101,54 @@ document.querySelector(".torles").addEventListener('click', () => {
 });
 
 kiir();
+
+
+(function () {
+  const KOZEP = [47.1625, 19.5033];
+
+  const terkep = L.map("terkep").setView(KOZEP, 7);
+
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "&copy; OpenStreetMap contributors"
+  }).addTo(terkep);
+
+  const pontStilus = {
+    radius: 8,
+    color: "#ffffff",
+    weight: 2,
+    fillColor: "#198754",
+    fillOpacity: 1
+  };
+
+  setTimeout(() => terkep.invalidateSize(), 0);
+
+  const gomb = document.querySelector(".hozzaad");
+  if (!gomb) return;
+
+  gomb.addEventListener("click", async () => {
+    const varos = (document.querySelector(".varos")?.value || "").trim();
+    let hely = null;
+
+    if (varos) {
+      try {
+        const url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=hu&q=" +
+          encodeURIComponent(varos);
+        const valasz = await fetch(url);
+        const talalat = await valasz.json();
+        if (talalat.length) hely = [parseFloat(talalat[0].lat), parseFloat(talalat[0].lon)];
+      } catch (e) {}
+    }
+
+    if (!hely) {
+      hely = [
+        KOZEP[0] + (Math.random() - 0.5) * 1.2,
+        KOZEP[1] + (Math.random() - 0.5) * 2.4
+      ];
+    }
+
+    const nev = (document.querySelector(".marka")?.value || "").trim();
+    const pont = L.circleMarker(hely, pontStilus).addTo(terkep);
+    if (nev || varos) pont.bindPopup([nev, varos].filter(Boolean).join(" – "));
+  });
+})();

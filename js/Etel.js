@@ -24,7 +24,7 @@ class Etel {
         this.#varos = varos;
         return true;
     }
-//ai
+
     setTelefon(telefon) {
         if (!/^(\+36|06)[\s-]?\d{1,2}[\s-]?\d{3}[\s-]?\d{3,4}$/.test(telefon)) {
             return false;
@@ -32,7 +32,6 @@ class Etel {
         this.#telefon = telefon;
         return true;
     }
-//ai
 
     getNev() {
         return this.#nev;
